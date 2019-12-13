@@ -1142,6 +1142,10 @@
             "changeFeed": {
               "$ref": "#/definitions/ChangeFeed",
               "description": "The blob service properties for change feed events."
+            },
+            "lastAccessTimeTrackingPolicy":{
+              "$ref": "#/definitions/LastAccessTimeTrackingPolicy",
+              "description": "The blob service property to configure last access time tracking policy."
             }
           },
           "x-ms-client-flatten": true,
@@ -1191,6 +1195,30 @@
         }
       },
       "description": "The blob service properties for soft delete."
+    },
+    "LastAccessTimeTrackingPolicy": {
+      "properties": {
+        "enable": {
+          "type": "boolean",
+          "description": "To enable last object access time based tracking."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the policy"
+        },
+        "trackingGranularityInDays": {
+          "type": "integer",
+          "description": "The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked."
+        },
+        "blobTypes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "An array of predefined supported blob types."
+        }
+      },
+      "description": "The blob service properties for change feed events."
     },
     "LeaseContainerRequest": {
       "properties": {

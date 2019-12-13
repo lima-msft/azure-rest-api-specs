@@ -2580,8 +2580,20 @@
           "$ref": "#/definitions/DateAfterModification",
           "description": "The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier"
         },
+        "downTierToCool": {
+          "$ref": "#/definitions/DownTierToCool",
+          "description": "The function to tier blobs to cool storage. Support blobs currently at Hot tier"
+        },
+        "downTierToArchive": {
+          "$ref": "#/definitions/DownTierToArchive",
+          "description": "The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier"
+        },
+        "upTierToHotFromCool": {
+          "$ref": "#/definitions/UpTierToHotFromCool",
+          "description": "The function to tier blobs to Hot storage. Support blobs currently at Cool tier"
+        },
         "delete": {
-          "$ref": "#/definitions/DateAfterModification",
+          "$ref": "#/definitions/DeleteActionConditions",
           "description": "The function to delete the blob"
         }
       },
@@ -2610,6 +2622,23 @@
       ],
       "description": "Object to define the number of days after last modification."
     },
+    "DeleteActionConditions": {
+      "properties": {
+        "daysAfterModificationGreaterThan": {
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0,
+          "description": "Value indicating the age in days after last modification"
+        },
+        "daysAfterLastAccessTimeGreaterThan": {
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0,
+          "description": "Value indicating the age in days after last blob access"
+        }
+      },
+      "description": "Object to define the number of days after last modification or last blob access."
+    },
     "DateAfterCreation": {
       "properties": {
         "daysAfterCreationGreaterThan": {
@@ -2623,6 +2652,52 @@
         "daysAfterCreationGreaterThan"
       ],
       "description": "Object to define the number of days after creation."
+    },
+    "DownTierToCool": {
+      "properties": {
+        "daysAfterLastAccessTimeGreaterThan": {
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0,
+          "description": "Value indicating the age in days after last blob access"
+        },
+        "enableAutoUpTierToHot": {
+          "type": "boolean",
+          "description": "This property enables auto tier to hot from cool on last blob access"
+        }
+      },
+      "required": [
+        "daysAfterLastAccessTimeGreaterThan"
+      ],
+      "description": "Object to define the number of days after last blob access."
+    },
+    "DownTierToArchive": {
+      "properties": {
+        "daysAfterLastAccessTimeGreaterThan": {
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0,
+          "description": "Value indicating the age in days after last blob access"
+        }
+      },
+      "required": [
+        "daysAfterLastAccessTimeGreaterThan"
+      ],
+      "description": "Object to define the number of days after last blob access."
+    },
+    "UpTierToHotFromCool": {
+      "properties": {
+        "daysAfterLastAccessTimeLessThan": {
+          "type": "number",
+          "multipleOf": 1.0,
+          "minimum": 0,
+          "description": "Value indicating the age in days after last blob access."
+        }
+      },
+      "required": [
+        "daysAfterLastAccessTimeLessThan"
+      ],
+      "description": "Object to define the number of days after last blob access"
     },
     "PrivateEndpointConnection": {
       "properties": {
