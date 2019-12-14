@@ -1210,7 +1210,7 @@
           "type": "integer",
           "description": "The field specifies blob object tracking granularity in days, typically how often the blob object should be tracked."
         },
-        "blobTypes": {
+        "blobType": {
           "type": "array",
           "items": {
             "type": "string"
