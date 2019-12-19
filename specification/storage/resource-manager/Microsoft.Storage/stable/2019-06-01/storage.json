@@ -2670,15 +2670,15 @@
         },
         "downTierToCool": {
           "$ref": "#/definitions/DownTierToCool",
-          "description": "The function to tier blobs to cool storage. Support blobs currently at Hot tier"
+          "description": "The function to tier blobs to cool storage. Support blobs currently at Hot tier with. This property can only be used in conjuction with last access time tracking policy"
         },
         "downTierToArchive": {
           "$ref": "#/definitions/DownTierToArchive",
-          "description": "The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier"
+          "description": "The function to tier blobs to archive storage. Support blobs currently at Hot or Cool tier. This property can only be used in conjuction with last access time tracking policy"
         },
         "upTierToHotFromCool": {
           "$ref": "#/definitions/UpTierToHotFromCool",
-          "description": "The function to tier blobs to Hot storage. Support blobs currently at Cool tier"
+          "description": "The function to tier blobs to Hot storage. Support blobs currently at Cool tier. This property can only be used in conjuction with last access time tracking policy"
         },
         "delete": {
           "$ref": "#/definitions/DeleteActionConditions",
@@ -2722,7 +2722,7 @@
           "type": "number",
           "multipleOf": 1.0,
           "minimum": 0,
-          "description": "Value indicating the age in days after last blob access"
+          "description": "Value indicating the age in days after last blob access. This property can only be used in conjuction with last access time tracking policy"
         }
       },
       "description": "Object to define the number of days after last modification or last blob access."

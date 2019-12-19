@@ -1208,7 +1208,7 @@
           "description": "An array of predefined supported blob types."
         }
       },
-      "description": "The blob service properties for change feed events."
+      "description": "The blob service properties for Last access time tracking policy."
     },
     "LeaseContainerRequest": {
       "properties": {
