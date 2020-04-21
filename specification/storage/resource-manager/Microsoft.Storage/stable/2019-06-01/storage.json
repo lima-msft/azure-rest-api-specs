@@ -3243,7 +3243,6 @@
       "properties": {
         "daysAfterModificationGreaterThan": {
           "type": "number",
-          "multipleOf": 1.0,
           "minimum": 0,
           "description": "Value indicating the age in days after last modification"
         }
@@ -3257,7 +3256,6 @@
       "properties": {
         "daysAfterCreationGreaterThan": {
           "type": "number",
-          "multipleOf": 1.0,
           "minimum": 0,
           "description": "Value indicating the age in days after creation"
         }
