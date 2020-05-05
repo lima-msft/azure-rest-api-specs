@@ -734,6 +734,9 @@
         "x-ms-examples": {
           "StorageAccountSetManagementPolicies": {
             "$ref": "./examples/StorageAccountSetManagementPolicy.json"
+          },
+          "StorageAccountSetMangementPolicy_LastAccessTimeBasedBlobActions": {
+            "$ref": "./examples/StorageAccountSetMangementPolicy_LastAccessTimeBasedBlobActions.json"
           }
         },
         "parameters": [

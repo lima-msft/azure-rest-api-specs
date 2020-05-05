@@ -64,6 +64,9 @@
         "x-ms-examples": {
           "PutBlobServices": {
             "$ref": "./examples/BlobServicesPut.json"
+          },
+          "BlobServicesPutLastAccessTimeBasedTracking": {
+            "$ref": "./examples/BlobServicesPutLastAccessTimeBasedTracking.json"
           }
         },
         "description": "Sets the properties of a storage account’s Blob service, including properties for Storage Analytics and CORS (Cross-Origin Resource Sharing) rules. ",
@@ -1153,7 +1156,7 @@
             },
             "lastAccessTimeTrackingPolicy":{
               "$ref": "#/definitions/LastAccessTimeTrackingPolicy",
-              "description": "The blob service property to configure last access time tracking policy."
+              "description": "The blob service property to configure last access time based tracking policy."
             }
           },
           "x-ms-client-flatten": true,
@@ -1216,11 +1219,18 @@
       "properties": {
         "enable": {
           "type": "boolean",
-          "description": "To enable last object access time based tracking."
+          "description": "When set to true last access time based tracking is enabled."
         },
         "name": {
           "type": "string",
-          "description": "Name of the policy"
+          "description": "Name of the policy. The valid value is AccessTimeTracking",
+          "enum": [
+            "AccessTimeTracking"
+          ],
+          "x-ms-enum": {
+            "name": "name",
+            "modelAsString": true
+          }
         },
         "trackingGranularityInDays": {
           "type": "integer",
@@ -1234,7 +1244,10 @@
           "description": "An array of predefined supported blob types."
         }
       },
-      "description": "The blob service properties for Last access time tracking policy."
+      "required": [
+        "enable"
+      ],
+      "description": "The blob service properties for Last access time based tracking policy."
     },
     "LeaseContainerRequest": {
       "properties": {
