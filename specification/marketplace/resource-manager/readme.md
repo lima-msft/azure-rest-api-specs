@@ -22,14 +22,19 @@ To see additional help and options, run:
 
 ### Basic Information
 
-Make an HTTPs request from Ibiza to the endpoint in order to get the check if user is private or not
+These are the global settings for the Marketplace API.
+
+``` yaml
+openapi-type: arm
+tag: package-2020-01-01
+```
 
 
 ### Tag: package-2019-12-01
 
 These settings apply only when `--tag=package-2019-12-01` is specified on the command line.
 
-```yaml $(tag) == 'package-2019-12-01'
+``` yaml $(tag) == 'package-2019-12-01'
 input-file:
   - Microsoft.Marketplace/stable/2019-12-01/Marketplace.json
 ```
@@ -38,7 +43,7 @@ input-file:
 
 These settings apply only when `--tag=package-2020-01-01` is specified on the command line.
 
-```yaml $(tag) == 'package-2020-01-01'
+``` yaml $(tag) == 'package-2020-01-01'
 input-file:
   - Microsoft.Marketplace/stable/2020-01-01/Marketplace.json
 ```
@@ -55,6 +60,9 @@ swagger-to-sdk:
   - repo: azure-sdk-for-net
     after_scripts:
       - bundle install && rake arm:regen_all_profiles['azure_mgmt_marketplace']
+  - repo: azure-resource-manager-schemas
+    after_scripts:
+      - node sdkauto_afterscript.js marketplace/resource-manager
 ```
 
 ## C#
@@ -70,6 +78,10 @@ csharp:
   output-folder: $(csharp-sdks-folder)/marketplace/Microsoft.Azure.Management.Marketplace/src/Generated
   clear-output-folder: true
 ```
+
+## AzureResourceSchema
+
+See configuration in [readme.azureresourceschema.md](./readme.azureresourceschema.md)
 
 ## Multi-API/Profile support for AutoRest v3 generators 
 
